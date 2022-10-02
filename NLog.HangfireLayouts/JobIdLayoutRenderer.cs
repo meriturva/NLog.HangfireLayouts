@@ -64,7 +64,7 @@ namespace HangfireNLog.NLog
 
         protected void DoAppend(StringBuilder builder, LogEventInfo logEvent)
         {
-            var id = PerformContextAccessor.PerformingContext.JobId;
+            var id = PerformContextAccessor.PerformingContext.BackgroundJob.Id;
             if (!string.IsNullOrEmpty(id))
             {
                 builder.Append(id);

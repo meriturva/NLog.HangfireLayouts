@@ -13,7 +13,9 @@ NLog.HangfireLayouts is available as a NuGet package. You can install it using t
 PM> Install-Package Bonura.HangfireLayouts
 ```
 
-First install and configure package: Hangfire.PerformContextAccesso. See: https://github.com/meriturva/Hangfire.PerformContextAccessor
+**First install and configure package: Hangfire.PerformContextAccessor**.
+
+See: https://github.com/meriturva/Hangfire.PerformContextAccessor
 
 After installation, update your NLog settings:
 

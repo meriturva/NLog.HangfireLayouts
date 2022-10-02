@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.1.0</Version>
+    <PackageId>Bonura.NLog.HangfireLayouts</PackageId>
+    <Authors>Diego Bonura</Authors>
+    <Description>Render layouts for Hangfire</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/meriturva/NLog.HangfireLayouts</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bonura.Hangfire.PerformContextAccessor" Version="1.1.0" />
+    <PackageReference Include="NLog" Version="5.0.4" />
+  </ItemGroup>
+
+</Project>

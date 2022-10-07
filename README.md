@@ -1,6 +1,6 @@
 # NLog.HangfireLayouts
 
-[![Latest version](https://img.shields.io/nuget/v/Bonura.HangfireLayouts.svg)](https://www.nuget.org/packages?q=Bonura.HangfireLayouts)
+[![Latest version](https://img.shields.io/nuget/v/Bonura.NLog.HangfireLayouts.svg)](https://www.nuget.org/packages?q=Bonura.NLog.HangfireLayouts)
 
 Few hangfire layouts to use with NLog logging library
 
@@ -10,7 +10,7 @@ Installation
 NLog.HangfireLayouts is available as a NuGet package. You can install it using the NuGet Package Console window:
 
 ```
-PM> Install-Package Bonura.HangfireLayouts
+PM> Install-Package Bonura.NLog.HangfireLayouts
 ```
 
 **First install and configure package: `Hangfire.PerformContextAccessor`**.

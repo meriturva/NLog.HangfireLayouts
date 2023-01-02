@@ -15,9 +15,11 @@ namespace HangfireNLog.NLog
     /// <remarks>
     /// <code>${hangfire-jobid}</code>
     /// </remarks>
-    [LayoutRenderer("hangfire-jobid")]
-    public class JobIdLayoutRenderer : LayoutRenderer
+    [LayoutRenderer("hangfire-decorator")]
+    public class JobDecoratorLayoutRenderer : LayoutRenderer
     {
+        public static readonly string HANGFIRE_JOB_ID_PROPERTY_NAME = "hangfire-jobid";
+
         /// <summary>
         /// Context for DI
         /// </summary>
@@ -68,7 +70,10 @@ namespace HangfireNLog.NLog
             
             if (!string.IsNullOrEmpty(id))
             {
-                builder.Append(id);
+                if (!logEvent.Properties.ContainsKey(HANGFIRE_JOB_ID_PROPERTY_NAME))
+                {
+                    logEvent.Properties.Add(HANGFIRE_JOB_ID_PROPERTY_NAME, id);
+                }
             }
         }
     }

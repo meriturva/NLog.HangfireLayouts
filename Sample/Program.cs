@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHangfirePerformContextAccessor();
 
 // Add Hangfire services.
-GlobalConfiguration.Configuration.UseInMemoryStorage();
+//GlobalConfiguration.Configuration.UseInMemoryStorage();
+GlobalConfiguration.Configuration.UseSqlServerStorage(@"Server=localhost,1433;Database=services;User Id=sa;Password=Loccioni123!;");
 builder.Services.AddHangfire((serviceProvider, config) =>
 {
     // Add filter to handle PerformContextAccessor
@@ -28,14 +29,11 @@ builder.Host.UseNLog();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseHangfireDashboard();
 
 app.MapControllers();
 
-BackgroundJob.Enqueue<SimpleJob>(sj => sj.DoJobAsync());
+//BackgroundJob.Enqueue<SimpleJob>(sj => sj.DoJobAsync());
+RecurringJob.AddOrUpdate<SimpleJob>("test", sj => sj.DoJobAsync(), "*/5 * * * * *");
 
 app.Run();

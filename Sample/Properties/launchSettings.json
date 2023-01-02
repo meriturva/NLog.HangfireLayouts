@@ -3,6 +3,7 @@
     "Sample": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "hangfire",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

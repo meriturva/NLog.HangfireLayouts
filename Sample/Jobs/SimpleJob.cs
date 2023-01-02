@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Hangfire;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace Sample.Jobs
@@ -12,10 +13,11 @@ namespace Sample.Jobs
             _logger = logger;
         }
 
+        [LatencyTimeoutAttribute(10)]
         public async Task DoJobAsync()
         {
-            _logger.LogInformation("Test log message");
-            
+            _logger.LogInformation("Test log message1");
+            _logger.LogInformation("Test log message2");
             await Task.CompletedTask;
         }
     }

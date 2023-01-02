@@ -1,16 +1,16 @@
 ﻿using Hangfire;
-using HangfireNLog.NLog;
+using Hangfire.Storage;
 using NLog.Targets;
 using System.Collections.Generic;
 
-namespace NLog.HangfireLayouts
+namespace NLog.HangfireJobLogsTarget
 {
-    [Target("Hangfire")]
-    public sealed class HangfireTarget : TargetWithLayout
+    [Target("HangfireJobLogs")]
+    public sealed class HangfireJobLogsTarget : TargetWithLayout
     {
         protected override void Write(LogEventInfo logEvent)
         {
-            string logMessage = this.Layout.Render(logEvent);
+            string logMessage = Layout.Render(logEvent);
 
             var jobStorageConnection = JobStorage.Current.GetConnection();
 
@@ -26,7 +26,8 @@ namespace NLog.HangfireLayouts
                         new KeyValuePair<string, string>($"{logEvent.SequenceID}-ticks", logEvent.TimeStamp.Ticks.ToString())
                     };
 
-                    tran.SetRangeInHash($"nlog-jobId:{jobId}", keyValuePairs);
+                    tran.SetRangeInHash($"joblogs-jobId:{jobId}", keyValuePairs);
+                    (tran as JobStorageTransaction).ExpireHash($"joblogs-jobId:{jobId}", JobStorage.Current.JobExpirationTimeout);
                     tran.Commit();
                 }
             }

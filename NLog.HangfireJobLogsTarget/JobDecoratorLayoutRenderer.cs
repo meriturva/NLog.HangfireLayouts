@@ -7,7 +7,7 @@ using NLog.LayoutRenderers;
 using System;
 using System.Text;
 
-namespace HangfireNLog.NLog
+namespace NLog.HangfireJobLogsTarget
 {
     /// <summary>
     /// Rendering HangFire JobId
@@ -67,7 +67,7 @@ namespace HangfireNLog.NLog
         protected void DoAppend(StringBuilder builder, LogEventInfo logEvent)
         {
             var id = PerformContextAccessor.PerformingContext.BackgroundJob.Id;
-            
+
             if (!string.IsNullOrEmpty(id))
             {
                 if (!logEvent.Properties.ContainsKey(HANGFIRE_JOB_ID_PROPERTY_NAME))

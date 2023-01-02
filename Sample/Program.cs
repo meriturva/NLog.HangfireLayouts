@@ -1,4 +1,5 @@
 using Hangfire;
+using Hangfire.JobLogs;
 using Hangfire.PerformContextAccessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,12 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHangfirePerformContextAccessor();
 
 // Add Hangfire services.
-//GlobalConfiguration.Configuration.UseInMemoryStorage();
-GlobalConfiguration.Configuration.UseSqlServerStorage(@"Server=localhost,1433;Database=services;User Id=sa;Password=Loccioni123!;");
 builder.Services.AddHangfire((serviceProvider, config) =>
 {
     // Add filter to handle PerformContextAccessor
     config.UsePerformContextAccessorFilter(serviceProvider);
+    config.UseSqlServerStorage("Server=localhost,1433;Database=services;User Id=sa;Password=Loccioni123!;");
+    // config.UseInMemoryStorage();
+    // Add jobLogs
+    config.UseJobLogs();
 });
 
 // Add the processing server as IHostedService

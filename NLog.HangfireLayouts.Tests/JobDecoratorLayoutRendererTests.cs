@@ -1,5 +1,5 @@
 ﻿using Hangfire.PerformContextAccessor;
-using HangfireNLog.NLog;
+using NLog.HangfireJobLogsTarget;
 using NLog.HangfireLayouts.Tests.Mocks;
 using Xunit;
 
@@ -21,7 +21,7 @@ namespace NLog.HangfireLayouts.Tests
         {
             // Arrange
             _performContextAccessor.PerformingContext = _context.Object;
-            var renderer = new JobIdDecoratorLayoutRenderer();
+            var renderer = new JobDecoratorLayoutRenderer();
             renderer.PerformContextAccessor = _performContextAccessor;
             // Act
             var logEvent = new LogEventInfo();
@@ -36,7 +36,7 @@ namespace NLog.HangfireLayouts.Tests
         public void EmptyTest()
         {
             // Arrange
-            var renderer = new JobIdDecoratorLayoutRenderer();
+            var renderer = new JobDecoratorLayoutRenderer();
             renderer.PerformContextAccessor = _performContextAccessor;
             // Act
             var logEvent = new LogEventInfo();
@@ -50,7 +50,7 @@ namespace NLog.HangfireLayouts.Tests
         public void NoPerformContextAccessorTest()
         {
             // Arrange
-            var renderer = new JobIdDecoratorLayoutRenderer();
+            var renderer = new JobDecoratorLayoutRenderer();
             renderer.PerformContextAccessor = null;
             // Act
             var logEvent = new LogEventInfo();

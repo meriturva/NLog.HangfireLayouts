@@ -16,8 +16,12 @@ namespace Sample.Jobs
         [LatencyTimeoutAttribute(10)]
         public async Task DoJobAsync()
         {
-            _logger.LogInformation("Test log message1");
-            _logger.LogInformation("Test log message2");
+            for (int i = 0; i < 10; i++)
+            {
+                _logger.LogInformation("Test log message1 - " + i);
+                _logger.LogWarning("Test log message2 - " + i);
+                await Task.Delay(1000);
+            }
             await Task.CompletedTask;
         }
     }

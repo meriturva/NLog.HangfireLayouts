@@ -22,8 +22,7 @@ namespace NLog.HangfireJobLogsTarget
                 using (var tran = jobStorageConnection.CreateWriteTransaction())
                 {
                     var keyValuePairs = new[] {
-                        new KeyValuePair<string, string>($"{logEvent.SequenceID}-message", logMessage),
-                        new KeyValuePair<string, string>($"{logEvent.SequenceID}-ticks", logEvent.TimeStamp.Ticks.ToString())
+                        new KeyValuePair<string, string>($"{logEvent.SequenceID}-message", logMessage)
                     };
 
                     tran.SetRangeInHash($"joblogs-jobId:{jobId}", keyValuePairs);

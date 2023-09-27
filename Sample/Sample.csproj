@@ -15,8 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hangfire.JobLogs\Hangfire.JobLogs.csproj" />
-    <ProjectReference Include="..\NLog.HangfireJobLogsTarget\NLog.HangfireJobLogsTarget.csproj" />
     <ProjectReference Include="..\NLog.HangfireLayouts\NLog.HangfireLayouts.csproj" />
   </ItemGroup>
 

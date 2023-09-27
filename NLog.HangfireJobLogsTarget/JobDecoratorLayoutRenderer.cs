@@ -1,6 +1,5 @@
 ﻿using Hangfire.PerformContextAccessor;
 using Microsoft.Extensions.DependencyInjection;
-using NLog;
 using NLog.Common;
 using NLog.Config;
 using NLog.LayoutRenderers;

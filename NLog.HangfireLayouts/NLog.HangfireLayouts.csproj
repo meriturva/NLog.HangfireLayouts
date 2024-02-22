@@ -10,7 +10,6 @@
     <Description>Render layouts for Hangfire</Description>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/meriturva/NLog.HangfireLayouts</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
